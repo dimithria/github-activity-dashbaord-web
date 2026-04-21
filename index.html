@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Activity Dashboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen p-6">
+
+  <div class="max-w-7xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold mb-2">
+        Dashboard de Atividades do GitHub</h1>
+      <p class="text-slate-400">
+        Explore o perfil, contribuições e atividade pública de qualquer usuário.</p>
+    </header>
+
+    <section class="glass rounded-2xl p-6 mb-6">
+      <div class="flex flex-col md:flex-row gap-4">
+        <input type="text" id="usernameInput" placeholder="Digite um username do GitHub" class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-blue-500">
+
+        <button id="searchBtn" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition font-semibold">
+            Buscar Atividades
+        </button>
+      </div>
+
+      <div class="mt-4 text-sm text-slate-400">
+        Atualização automática baseada no header X-Poll-Interval da API.
+      </div>
+    </section>
+
+    <section id="userInfo" class="hidden glass rounded-2xl p-6 mb-6">
+      <div class="flex items-center gap-4">
+        <img id="avatar" src="" alt="Avatar" class="w-20 h-20 rounded-full border border-slate-700"/>
+
+        <div>
+          <h2 id="displayName" class="text-2xl font-bold"></h2>
+          <p id="profileUsername" class="text-slate-400"></p>
+          <a id="profileLink" href="#" target="_blank" class="text-blue-400 hover:underline">
+            Ver perfil
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div class="glass rounded-2xl p-6">
+        <h3 class="text-xl font-semibold mb-4">Eventos por Tipo</h3>
+        <canvas id="eventTypeChart"></canvas>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <h3 class="text-xl font-semibold mb-4">Eventos por Dia</h3>
+        <canvas id="eventDateChart"></canvas>
+      </div>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold">Lista de Eventos</h3>
+        <span id="eventCount" class="text-slate-400 text-sm"></span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-slate-700">
+              <th class="py-3 px-2">Tipo</th>
+              <th class="py-3 px-2">Repositório</th>
+              <th class="py-3 px-2">Data</th>
+              <th class="py-3 px-2">Detalhes</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
