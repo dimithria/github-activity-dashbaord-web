@@ -1,4 +1,4 @@
-# GitHub Activity Dashboard
+# GitHub Activity Dashboard Web
 
 ## 📋 O que é este projeto?
 
